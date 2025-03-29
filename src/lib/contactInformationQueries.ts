@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const root = import.meta.env.PROD ? `${import.meta.env.VITE_NODE_JS_PROD_URL}/api` : "http://localhost:5000/api";
+const root = import.meta.env.PROD
+  ? `${import.meta.env.VITE_NODE_JS_PROD_URL}/api`
+  : "http://localhost:5000/api";
 export const addContactInformation = async (formData: FormData) => {
   try {
     const response = await axios.post<{
@@ -32,11 +34,16 @@ export const addContactInformation = async (formData: FormData) => {
 };
 
 export const getUserContactInformations = async (userId: number) => {
+  const token = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("token="))
+    ?.split("=")[1];
   try {
     const response = await axios.get(
       `${root}/contact-information/user-contacts/${userId}`,
       {
         withCredentials: true,
+        headers: { Authorization: `Bearer ${token}` },
       }
     );
     console.log(response.data);
@@ -96,11 +103,16 @@ export const deleteContact = async (id: string) => {
 };
 
 export const getSharedContacts = async (userId: number) => {
+  const token = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("token="))
+    ?.split("=")[1];
   try {
     const response = await axios.get(
       `${root}/contact-information/shared-contacts/${userId}`,
       {
         withCredentials: true,
+        headers: { Authorization: `Bearer ${token}` },
       }
     );
     console.log(response.data);
@@ -112,11 +124,16 @@ export const getSharedContacts = async (userId: number) => {
 };
 
 export const getMySharedContacts = async (userId: number) => {
+  const token = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("token="))
+    ?.split("=")[1];
   try {
     const response = await axios.get(
       `${root}/contact-information/my-shared-contacts/${userId}`,
       {
         withCredentials: true,
+        headers: { Authorization: `Bearer ${token}` },
       }
     );
     console.log(response.data);
