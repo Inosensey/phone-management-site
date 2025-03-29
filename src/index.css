@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #121212;
+  --color-lightPrimary: #1E1E1E;
+  --color-foreground: #A8D5BA;
+  --color-secondary: #4B6F64;
+  --color-lightSecondary: #D3F0D1;
+  --color-textGray: #e0e1dd;
+  --color-ctaBackground: #3E8E41;
+  --color-ctaText: #FFFFFF;
+  --color-active: #4A9B50;
+  --color-pending: #B58E1C;
+  --color-deactivated: #B07A42;
+  --color-statusText: #e0e1dd;
+  --color-warningColor: #dc3545;
+  --color-fadedWarningColor: #e05260;
+  --breakpoint-phone: 280px ;
+  --breakpoint-mdphone: 420px ;
+  --breakpoint-tablet: 576px ;
+  --breakpoint-mdtablet: 676px ;
+  --breakpoint-laptop: 992px ;
+  --breakpoint-desktop: 1280px ;
+  --breakpoint-larger: 1920px ;
+}
+
+body {
+  box-sizing: border-box;
+}
+input,
+button,
+textarea,
+select {
+  outline: none;
+}
