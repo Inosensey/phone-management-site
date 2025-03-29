@@ -32,7 +32,8 @@ interface props {
   userList: userInfoType[];
   setFormAction: React.Dispatch<React.SetStateAction<string>>;
   setToggleUserInformationForm: React.Dispatch<React.SetStateAction<boolean>>;
-  setSelectedUser: React.Dispatch<React.SetStateAction<number>>;
+  setSelectedUser: React.Dispatch<React.SetStateAction<userInfoType | undefined>>;
+  userInfo: userInfoType
 }
 
 const UserCard = ({
@@ -45,10 +46,10 @@ const UserCard = ({
   setUserList,
   setAccountRequestList,
   id,
-  selectedIndex,
   setFormAction,
   setToggleUserInformationForm,
   setSelectedUser,
+  userInfo
 }: props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [loadingMessage, setLoadingMessage] = useState<string>("")
@@ -141,8 +142,8 @@ const UserCard = ({
                 setLoadingMessage("")
                 if (response!.Result) {
                   setUserList((prev) => {
-                    return prev.map((user, index) =>
-                      index === selectedIndex
+                    return prev.map((user) =>
+                      user.id === id!
                         ? { ...user, status_id: 2, status_name: "Deactivated" }
                         : user
                     );
@@ -163,7 +164,7 @@ const UserCard = ({
             <button
               onClick={async () => {
                 setFormAction("Update");
-                setSelectedUser(selectedIndex);
+                setSelectedUser(userInfo);
                 setToggleUserInformationForm(true);
               }}
               className="flex items-center gap-1 cursor-pointer rounded-md py-1 px-2 w-max text-[0.8rem] font-semibold text-statusText bg-pending opacity-80 hover:opacity-100 transition ease-in-out duration-300"
@@ -240,7 +241,7 @@ const UserCard = ({
             <button
               onClick={async () => {
                 setFormAction("Update");
-                setSelectedUser(selectedIndex);
+                setSelectedUser(userInfo);
                 setToggleUserInformationForm(false);
               }}
               className="flex items-center gap-1 cursor-pointer rounded-md py-1 px-2 w-max text-[0.8rem] font-semibold text-statusText bg-pending opacity-80 hover:opacity-100 transition ease-in-out duration-300"
