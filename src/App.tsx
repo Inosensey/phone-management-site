@@ -127,7 +127,6 @@ function App() {
                     result: signInResult!.Result,
                     message: signInResult!.Message,
                   }));
-                  console.log(signInResult);
                   if (signInResult!.Result) {
                     document.cookie = `token=${
                       signInResult!.Token

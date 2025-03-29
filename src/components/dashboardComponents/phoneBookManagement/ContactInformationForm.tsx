@@ -264,10 +264,6 @@ const ContactInformationForm = ({
 
                   // Append image file if available
                   if (contactInformationInputs.profilePhotoInformation?.file) {
-                    console.log(
-                      "File detected:",
-                      contactInformationInputs.profilePhotoInformation.file
-                    );
                     formData.append(
                       "image",
                       contactInformationInputs.profilePhotoInformation.file
@@ -370,7 +366,6 @@ const ContactInformationForm = ({
                       });
                       setToggleContactInformationForm(false);
                     }
-                    console.log(response);
                   }
                 }}
                 className="cursor-pointer flex gap-1 items-center bg-[#5d897b] text-white font-quickSand font-semibold w-full rounded-md p-1 px-2 transition duration-200 hover:bg-secondary"

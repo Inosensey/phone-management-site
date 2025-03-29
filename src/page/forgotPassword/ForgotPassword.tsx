@@ -182,10 +182,9 @@ const ForgotPassword = () => {
                       setLoadingMessage(
                         "Sending Password Reset Code. Please Wait"
                       );
-                      const response = await sendSecretCode();
+                      await sendSecretCode();
                       setIsLoading(false);
                       setLoadingMessage("");
-                      console.log(response);
                     }}
                     className="text-sm underline cursor-pointer font-semibold"
                   >

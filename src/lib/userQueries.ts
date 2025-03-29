@@ -69,7 +69,6 @@ export const approveAccount = async (id: number) => {
     }>(`${root}/user/approve-account`, {
       id: id,
     });
-    console.log(response);
     return {
       Result: response.data.Result,
       Message: response.data.Message,
@@ -88,7 +87,7 @@ export const activateAccount = async (id: number) => {
     }>(`${root}/user/activate-account`, {
       id: id,
     });
-    console.log(response);
+    
     return {
       Result: response.data.Result,
       Message: response.data.Message,
@@ -106,7 +105,7 @@ export const deactivateAccount = async (id: number) => {
     }>(`${root}/user/deactivate-account`, {
       id: id,
     });
-    console.log(response);
+    
     return {
       Result: response.data.Result,
       Message: response.data.Message,
@@ -140,7 +139,7 @@ export const updateAccount = async ({
       firstName: firstName,
       lastName: lastName,
     });
-    console.log(response);
+    
     return {
       Result: response.data.Result,
       Message: response.data.Message,
@@ -158,7 +157,7 @@ export const deleteAccount = async (id: number) => {
     }>(`${root}/user/delete-user`, {
       data: { id },
     });
-    console.log(response);
+    
     return {
       Result: response.data.Result,
       Message: response.data.Message,
@@ -200,7 +199,7 @@ export const addUserThroughAdmin = async ({
       firstName: firstName,
       lastName: lastName,
     });
-    console.log(response);
+    
     return {
       Result: response.data.Result,
       Message: response.data.Message,
@@ -231,7 +230,7 @@ export const registerUser = async ({
       password: password,
       roleId: roleId,
     });
-    console.log(response);
+    
     return {
       Result: response.data.Result,
       Message: response.data.Message,
@@ -303,7 +302,7 @@ export const forgotPasswordRequest = async ({
       email: email,
       code: code,
     });
-    console.log(response);
+    
     return {
       Result: response.data.Result,
       Message: response.data.Message,

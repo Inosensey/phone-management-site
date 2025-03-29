@@ -58,7 +58,6 @@ const UserManagement = () => {
       setFilteredUserList(userList.filter((user) => user.status_name === tab && user.role_id !== 2));
     }
   };
-  console.log(userList);
   useEffect(() => {
     getUserList();
     // eslint-disable-next-line react-hooks/exhaustive-deps

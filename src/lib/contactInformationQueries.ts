@@ -21,7 +21,7 @@ export const addContactInformation = async (formData: FormData) => {
       headers: { "Content-Type": "multipart/form-data" },
     });
 
-    console.log(response);
+    
     return {
       Result: response.data.Result,
       Message: response.data.Message,
@@ -46,7 +46,6 @@ export const getUserContactInformations = async (userId: number) => {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    console.log(response.data);
     return response.data.contacts;
   } catch (error) {
     console.error("Failed to get contacts:", error);
@@ -72,7 +71,7 @@ export const updateContactInformation = async (formData: FormData) => {
       headers: { "Content-Type": "multipart/form-data" },
     });
 
-    console.log(response);
+    
     return {
       Result: response.data.Result,
       Message: response.data.Message,
@@ -92,7 +91,7 @@ export const deleteContact = async (id: string) => {
     }>(`${root}/contact-information/delete-contact-information`, {
       data: { id },
     });
-    console.log(response);
+    
     return {
       Result: response.data.Result,
       Message: response.data.Message,
@@ -115,7 +114,6 @@ export const getSharedContacts = async (userId: number) => {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    console.log(response.data);
     return response.data.contacts;
   } catch (error) {
     console.error("Failed to get contacts:", error);
@@ -136,7 +134,6 @@ export const getMySharedContacts = async (userId: number) => {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    console.log(response.data);
     return response.data.contacts;
   } catch (error) {
     console.error("Failed to get contacts:", error);
@@ -162,7 +159,7 @@ export const shareContactInformation = async ({
       contactShareTo: contactShareTo,
       contactId: contactId,
     });
-    console.log(response);
+    
     return {
       Result: response.data.Result,
       Message: response.data.Message,
@@ -181,7 +178,7 @@ export const deleteSharedContact = async (id: number) => {
     }>(`${root}/contact-information/delete-share-contact`, {
       data: { id },
     });
-    console.log(response);
+    
     return {
       Result: response.data.Result,
       Message: response.data.Message,

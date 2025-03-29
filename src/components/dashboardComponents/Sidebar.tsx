@@ -146,7 +146,6 @@ const Sidebar = () => {
                 setIsLoading(true);
                 setLoadingMessage("Logging Out Please Wait");
                 const signOutResult = await userSignOut();
-                console.log(signOutResult);
                 if (signOutResult!.Result) {
                   document.cookie =
                     "token=; userId=; path=/; max-age=0; secure; samesite=strict";
