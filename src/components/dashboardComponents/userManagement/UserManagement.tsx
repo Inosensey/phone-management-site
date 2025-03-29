@@ -41,7 +41,7 @@ const UserManagement = () => {
         await Promise.all([getUsers(), getAccountRequest()]);
       setUserList(users);
       setFilteredUserList(
-        users.filter((user) => user.status_name === "Active")
+        users.filter((user) => user.status_name === "Active" && user.role_id !== 2)
       );
       setAccountRequestList(accountRequest);
     } catch (error) {
@@ -55,7 +55,7 @@ const UserManagement = () => {
     if (tab === "Pending Request") {
       setFilteredUserList(accountRequestList);
     } else {
-      setFilteredUserList(userList.filter((user) => user.status_name === tab));
+      setFilteredUserList(userList.filter((user) => user.status_name === tab && user.role_id !== 2));
     }
   };
   console.log(userList);
@@ -69,7 +69,7 @@ const UserManagement = () => {
       setFilteredUserList(accountRequestList);
     } else {
       setFilteredUserList(
-        userList.filter((user) => user.status_name === selectedStatusTab)
+        userList.filter((user) => user.status_name === selectedStatusTab && user.role_id !== 2)
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
