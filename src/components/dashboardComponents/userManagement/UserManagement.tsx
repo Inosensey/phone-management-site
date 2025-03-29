@@ -28,7 +28,7 @@ const UserManagement = () => {
   const [filteredUserList, setFilteredUserList] = useState<Array<userInfoType>>(
     []
   );
-  const [selectedUser, setSelectedUser] = useState<number>(0);
+  const [selectedUser, setSelectedUser] = useState<userInfoType>();
   const [accountRequestList, setAccountRequestList] = useState<
     Array<userInfoType>
   >([]);
@@ -124,6 +124,7 @@ const UserManagement = () => {
                 filteredUserList.map((user: userInfoType, index: number) => (
                   <div key={index}>
                     <UserCard
+                    userInfo={user}
                       setToggleUserInformationForm={
                         setToggleUserInformationForm
                       }
@@ -158,8 +159,7 @@ const UserManagement = () => {
             setUserList={setUserList}
             action={formAction}
             setToggleUserInformationForm={setToggleUserInformationForm}
-            selectedUser={userList[selectedUser]}
-            selectedIndex={selectedUser}
+            selectedUser={selectedUser}
           />
         )}
       </AnimatePresence>
