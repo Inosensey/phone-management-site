@@ -26,14 +26,13 @@ interface props {
   selectedUser?: userInfoType;
   action: string;
   setUserList: React.Dispatch<React.SetStateAction<userInfoType[]>>;
-  selectedIndex: number;
+  selectedIndex?: number;
 }
 const UserInformationForm = ({
   setToggleUserInformationForm,
   action,
   selectedUser,
   setUserList,
-  selectedIndex,
 }: props) => {
   // Initials
   const userInputInitials: userInputType = {
@@ -143,8 +142,8 @@ const UserInformationForm = ({
                     setLoadingMessage("")
                     if (response!.Result) {
                       setUserList((prev) => {
-                        return prev.map((user, index) =>
-                          index === selectedIndex
+                        return prev.map((user) =>
+                          user.id === selectedUser!.id
                             ? {
                                 ...user,
                                 email: userInputs.emailInput,
