@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const root = import.meta.env.PROD ? "/api" : "http://localhost:5000/api";
+const root = import.meta.env.PROD ? `${import.meta.env.VITE_NODE_JS_PROD_URL}/api` : "http://localhost:5000/api";
 export const addContactInformation = async (formData: FormData) => {
   try {
     const response = await axios.post<{
