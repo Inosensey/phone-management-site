@@ -48,7 +48,6 @@ const ShareContactForm = ({
     .split("; ")
     .find((row) => row.startsWith("userId="))
     ?.split("=")[1];
-
   //States
   const [selectedUser, setSelectedUser] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -102,7 +101,7 @@ const ShareContactForm = ({
                         key={user.id}
                         value={user.id}
                       >
-                        {user.first_name + " " + user.last_name}
+                        {user.first_name + " " + user.last_name} - {user.role_name}
                       </option>
                     ))}
                 </select>
