@@ -17,10 +17,15 @@ type forgotPassword = {
   forgotPassword?: string;
 };
 
-export const getUsers = async () => {
+export const getUsers = async () => {    
+  const token = document.cookie
+  .split("; ")
+  .find((row) => row.startsWith("token="))
+  ?.split("=")[1];
   try {
     const response = await axios.get(`${root}/user`, {
       withCredentials: true,
+      headers: { Authorization: `Bearer ${token}` },
     });
     console.log(response.data);
     return response.data;
@@ -261,6 +266,10 @@ export const userSignIn = async ({ email, password }: userInfoType) => {
 };
 
 export const userSignOut = async () => {
+  const token = document.cookie
+  .split("; ")
+  .find((row) => row.startsWith("token="))
+  ?.split("=")[1];
   try {
     const response = await axios.post<{
       Result: boolean;
@@ -270,6 +279,7 @@ export const userSignOut = async () => {
       {},
       {
         withCredentials: true,
+        headers: { Authorization: `Bearer ${token}` },
       }
     );
     return {
