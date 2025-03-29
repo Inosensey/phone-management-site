@@ -31,8 +31,13 @@ export const getUsers = async () => {
 
 export const getAccountRequest = async () => {
   try {
+    const token = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("token="))
+      ?.split("=")[1];
     const response = await axios.get(`${root}/user/account-request`, {
       withCredentials: true,
+      headers: { Authorization: `Bearer ${token}` },
     });
     return response.data;
   } catch (error) {
